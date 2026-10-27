@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sandy Kohlmayer, photographe de mariage à Versailles</title>
+<meta name="description" content="Sandy Kohlmayer, photographe de mariage et portrait à Versailles. Lumière naturelle, reportage, un seul mariage par jour. Mariage dès 800 €.">
+<meta property="og:title" content="Sandy Kohlmayer, photographe de mariage à Versailles">
+<meta property="og:description" content="Mariages et portraits en lumière naturelle. Un seul mariage par jour. 8 ter rue Mgr Gibier, Versailles.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="theme-color" content="#0e131a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230e131a'/%3E%3Cpath d='M10 10h10M10 10v10M54 10H44M54 10v10M10 54h10M10 54V44M54 54H44M54 54V44' stroke='%23e6b47d' stroke-width='2.5' fill='none'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' font-style='italic' text-anchor='middle' fill='%23f2ece1'%3ESK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Sandy Kohlmayer Photographe",
+  "description": "Photographe de mariage et portrait à Versailles.",
+  "telephone": "+447445000261",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8 ter Rue Mgr Gibier",
+    "postalCode": "78000",
+    "addressLocality": "Versailles",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 48.7936449, "longitude": 2.1226263 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "10:00",
+    "closes": "19:30"
+  }],
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJNzilQcR95kcRACHaxkjuAYs",
+  "sameAs": ["https://www.facebook.com/546238902193780"]
+}
+</script>
+<style>
+/* ==========================================================================
+   DESIGN DECISIONS: Sandy Kohlmayer, photographe de mariage, Versailles
+   --------------------------------------------------------------------------
+   Direction: DARK CINEMATIC, built around one idea: "le viseur". There is
+   no portfolio in the data (one Street View of the street), so the site is
+   typography-led and borrows the photographer's own instruments: viewfinder
+   corner marks, an autofocus box that locks on "Le vôtre", an exposure meter,
+   GPS readout of the studio, a contact sheet where the frames are the
+   clients' words, a grease-pencil loop on the chosen frame.
+   Palette: taken from the only photo, rue Monseigneur Gibier: the night-navy
+   of the carriage door (bg/surface), the stone cream of the facades (ink,
+   paper sections) and the apricot render of no. 10 (brand: the single strong
+   colour move). Accent = grease-pencil red, used only for hand marks.
+   Type: Instrument Serif (display, roman + italic) for cinema-poster scale,
+   Hanken Grotesk 400/600 for text and tracked HUD labels.
+   Hero: typographic poster inside a viewfinder; headline from the strongest
+   fact: "un seul mariage par jour".
+   Rhythm: dark poster -> film band -> paper contact sheet (proof) -> dark
+   cascade list (styles) -> paper price list with sticky side -> dark FAQ ->
+   paper print + hours + map -> dark big-type contact -> footer wordmark.
+   ========================================================================== */
+:root{
+  --bg:#0e131a; --surface:#171f2b; --ink:#f2ece1; --ink-soft:#aaa59b;
+  --brand:#e6b47d; --brand-ink:#0e131a; --accent:#c8442c; --line:rgba(242,236,225,.16);
+  --paper:#ede6d8; --paper-ink:#16191e; --paper-soft:#55514a; --paper-line:rgba(22,25,30,.18);
+  --film:#131518;
+
+  --f-display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --f-text:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --step--1:clamp(.84rem,.8rem + .15vw,.92rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.125rem);
+  --step-1:clamp(1.25rem,1.12rem + .5vw,1.5rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+  --step-3:clamp(1.9rem,1.5rem + 1.8vw,3rem);
+  --step-4:clamp(2.4rem,1.7rem + 3.2vw,4.4rem);
+  --step-5:clamp(2.9rem,1.9rem + 5.2vw,6.6rem);
+  --step-6:clamp(3rem,15vw,9rem);
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px; --space-10:128px;
+  --section:clamp(64px,12vw,160px);
+  --gutter:clamp(20px,5vw,48px);
+  --r-1:2px; --r-2:14px;
+
+  --ease-out:cubic-bezier(.16,1,.3,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
+  --dur-1:180ms; --dur-2:400ms; --dur-3:800ms;
+
+  --header-h:64px; --bar:0px;
+}
+@media (max-width:767.98px){ :root{ --bar:calc(64px + env(safe-area-inset-bottom)); } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-text);font-size:var(--step-0);line-height:1.6;
+  padding-bottom:var(--bar);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+em{font-style:italic}
+ul,ol{margin:0;padding:0;list-style:none}
+::selection{background:var(--brand);color:var(--brand-ink)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:var(--r-1)}
+.paper :focus-visible{outline-color:var(--paper-ink)}
+section[id]{scroll-margin-top:calc(var(--header-h) - 1px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.icon{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:var(--gutter)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--gutter)}
+@media (min-width:960px){ .grid{grid-template-columns:repeat(12,minmax(0,1fr))} }
+
+.skip{position:fixed;left:12px;top:12px;z-index:200;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;
+  background:var(--brand);color:var(--brand-ink);font-weight:600;text-decoration:none;transform:translateY(-200%)}
+.skip:focus{transform:none}
+
+/* Labels: tracked caps, the HUD voice */
+.label{display:flex;align-items:center;gap:var(--space-3);font-size:var(--step--1);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.label span{color:var(--brand);font-variant-numeric:tabular-nums}
+.label::after{content:"";flex:0 0 40px;height:1px;background:currentColor;opacity:.5}
+.paper .label{color:var(--paper-soft)}
+.paper .label span{color:var(--paper-ink)}
+
+/* Buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;
+  border-radius:var(--r-1);font:600 var(--step-0)/1 var(--f-text);letter-spacing:.01em;text-decoration:none;border:1px solid transparent;
+  overflow:hidden;isolation:isolate;cursor:pointer;transition:transform var(--dur-1) var(--ease-out),color var(--dur-2) var(--ease-out),border-color var(--dur-2)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform var(--dur-2) var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn--primary{background:var(--brand);color:var(--brand-ink)}
+.btn--ghost{border-color:var(--line);color:var(--ink)}
+.btn--ghost::before{background:var(--brand)}
+.paper .btn--ghost{border-color:var(--paper-line);color:var(--paper-ink)}
+.paper .btn--ghost::before{background:var(--paper-ink)}
+.btn--dark{background:var(--paper-ink);color:var(--paper)}
+.btn--dark::before{background:var(--brand)}
+@media (hover:hover){
+  .btn:hover::before{transform:scaleX(1);transform-origin:left}
+  .btn--primary:hover{color:var(--brand-ink)}
+  .btn--ghost:hover{color:var(--brand-ink);border-color:var(--brand)}
+  .paper .btn--ghost:hover{color:var(--paper)}
+  .btn--dark:hover{color:var(--brand-ink)}
+}
+.link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;text-decoration:none;
+  background:linear-gradient(currentColor,currentColor) left calc(100% - 10px)/100% 1px no-repeat;transition:background-size var(--dur-2) var(--ease-out)}
+@media (hover:hover){ .link:hover{background-size:0 1px;background-position:right calc(100% - 10px)} }
+
+/* Header */
+.header{position:fixed;inset:0 0 auto;z-index:120;height:var(--header-h);transition:height var(--dur-2) var(--ease-out),background-color var(--dur-2),border-color var(--dur-2);
+  border-bottom:1px solid transparent}
+.header.is-scrolled{--header-h:54px;height:54px;background:rgba(14,19,26,.94);border-bottom-color:var(--line)}
+.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.mark{display:inline-flex;align-items:center;gap:12px;min-height:44px;text-decoration:none}
+.mark__sk{display:grid;place-items:center;width:36px;height:36px;font:italic 400 19px/1 var(--f-display);color:var(--ink);position:relative;
+  transition:transform var(--dur-2) var(--ease-out)}
+.mark__sk::before{content:"";position:absolute;inset:0;
+  background:
+   linear-gradient(var(--brand),var(--brand)) 0 0/8px 1.5px, linear-gradient(var(--brand),var(--brand)) 0 0/1.5px 8px,
+   linear-gradient(var(--brand),var(--brand)) 100% 0/8px 1.5px, linear-gradient(var(--brand),var(--brand)) 100% 0/1.5px 8px,
+   linear-gradient(var(--brand),var(--brand)) 0 100%/8px 1.5px, linear-gradient(var(--brand),var(--brand)) 0 100%/1.5px 8px,
+   linear-gradient(var(--brand),var(--brand)) 100% 100%/8px 1.5px, linear-gradient(var(--brand),var(--brand)) 100% 100%/1.5px 8px;
+  background-repeat:no-repeat}
+.mark__name{white-space:nowrap;font:400 22px/1 var(--f-display);letter-spacing:-.01em;transition:font-size var(--dur-2) var(--ease-out)}
+.is-scrolled .mark__name{font-size:20px}
+.is-scrolled .mark__sk{transform:scale(.88)}
+.nav{display:none}
+.header__cta{display:none}
+.menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;min-width:44px;padding:0 4px 0 12px;background:none;border:0;color:var(--ink);
+  font:600 var(--step--1)/1 var(--f-text);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.menu-btn__bars{position:relative;width:22px;height:10px}
+.menu-btn__bars::before,.menu-btn__bars::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform var(--dur-2) var(--ease-out)}
+.menu-btn__bars::before{top:0}.menu-btn__bars::after{bottom:0}
+.menu-btn[aria-expanded="true"] .menu-btn__bars::before{transform:translateY(4.25px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-btn__bars::after{transform:translateY(-4.25px) rotate(-45deg)}
+@media (min-width:960px){
+  .menu-btn{display:none}
+  .nav{display:flex;gap:var(--space-5)}
+  .nav a{display:inline-flex;align-items:center;min-height:44px;font-size:var(--step--1);font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);
+    background:linear-gradient(var(--brand),var(--brand)) left calc(100% - 10px)/0 1px no-repeat;transition:color var(--dur-1),background-size var(--dur-2) var(--ease-out)}
+  .nav a:hover{color:var(--ink);background-size:100% 1px}
+  .header__cta{display:inline-flex;min-height:44px;padding:0 18px;font-size:var(--step--1)}
+}
+
+/* Menu overlay */
+.menu{position:fixed;inset:0;z-index:110;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(var(--header-h) + 24px) var(--gutter) calc(32px + env(safe-area-inset-bottom));visibility:hidden;opacity:0;
+  transition:opacity var(--dur-2) var(--ease-out),visibility 0s linear var(--dur-2)}
+.menu.is-open{visibility:visible;opacity:1;transition:opacity var(--dur-2) var(--ease-out)}
+.menu ol{counter-reset:m;border-top:1px solid var(--line)}
+.menu li{border-bottom:1px solid var(--line);overflow:hidden}
+.menu a{display:flex;align-items:baseline;gap:16px;min-height:56px;padding:8px 0;font:400 var(--step-3)/1.1 var(--f-display);text-decoration:none;
+  transform:translateY(100%);transition:transform var(--dur-3) var(--ease-out);transition-delay:calc(var(--i) * 60ms + 80ms)}
+.menu a::before{counter-increment:m;content:"0" counter(m);font:600 12px/1 var(--f-text);letter-spacing:.14em;color:var(--brand)}
+.menu.is-open a{transform:none}
+.menu__foot{margin-top:var(--space-6);display:flex;flex-direction:column;gap:6px;color:var(--ink-soft);font-size:var(--step--1)}
+body.is-locked{overflow:hidden}
+
+/* ============ HERO: the viewfinder ============ */
+.hero{position:relative;min-height:calc(100svh - var(--bar));display:flex;padding-top:var(--header-h);isolation:isolate;
+  background:radial-gradient(120% 70% at 85% 0%,#1b2533 0%,transparent 60%),var(--bg)}
+.vf{position:absolute;inset:calc(var(--header-h) + 2px) 12px 12px;pointer-events:none;z-index:-1}
+.vf i{position:absolute;width:22px;height:22px;border:0 solid rgba(242,236,225,.55);transition:transform var(--dur-3) var(--ease-out),opacity var(--dur-3)}
+.vf i:nth-child(1){top:0;left:0;border-top-width:1.5px;border-left-width:1.5px}
+.vf i:nth-child(2){top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
+.vf i:nth-child(3){bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
+.vf i:nth-child(4){bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
+.vf__x{position:absolute;left:50%;top:50%;width:14px;height:14px;transform:translate(-50%,-50%);opacity:.35;
+  background:linear-gradient(var(--ink),var(--ink)) center/100% 1px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1px 100% no-repeat}
+.hero__inner{position:relative;display:flex;flex-direction:column;width:100%;padding-top:var(--space-4);padding-bottom:calc(12px + var(--space-5))}
+.hud{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+  font-variant-numeric:tabular-nums}
+.hud--top{padding-inline:var(--space-2)}
+.hud--top{flex-wrap:wrap;row-gap:6px}
+.hud--top>span:first-child{white-space:nowrap}
+@media (max-width:399.98px){ .hud{letter-spacing:.1em} }
+@media (max-width:359.98px){ .hud--top .clock{display:none} .menu-btn__label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)} .mark__name{font-size:20px} }
+.vf__x{display:none}
+.clock:empty{display:none}
+.badge{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink-soft)}
+.badge.is-open{color:var(--ink)}
+.badge.is-open::before{background:var(--brand);box-shadow:0 0 0 0 rgba(230,180,125,.6);animation:pulse 2.4s var(--ease-out) infinite}
+.badge:empty{display:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(230,180,125,0)}100%{box-shadow:0 0 0 0 rgba(230,180,125,0)}}
+.hero__body{margin-top:auto;padding-top:var(--space-6);padding-inline:var(--space-2)}
+.kicker{font-size:var(--step--1);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:var(--space-4);max-width:22ch}
+.hero__title{font-size:var(--step-6);line-height:.92;letter-spacing:-.025em}
+.line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.line>span{display:block}
+.af{position:relative;display:inline-block;color:var(--brand);padding:0 .12em;margin-left:-.12em}
+.af::after{content:"";position:absolute;inset:.12em -.02em .02em;opacity:.9;
+  --c:var(--brand);
+  background:
+   linear-gradient(var(--c),var(--c)) 0 0/.3em 1.5px, linear-gradient(var(--c),var(--c)) 0 0/1.5px .3em,
+   linear-gradient(var(--c),var(--c)) 100% 0/.3em 1.5px, linear-gradient(var(--c),var(--c)) 100% 0/1.5px .3em,
+   linear-gradient(var(--c),var(--c)) 0 100%/.3em 1.5px, linear-gradient(var(--c),var(--c)) 0 100%/1.5px .3em,
+   linear-gradient(var(--c),var(--c)) 100% 100%/.3em 1.5px, linear-gradient(var(--c),var(--c)) 100% 100%/1.5px .3em;
+  background-repeat:no-repeat}
+.hero__aside{margin-top:var(--space-5);display:grid;gap:var(--space-4)}
+.hero__lead{color:var(--ink-soft);max-width:34ch}
+.hero__index{display:none;gap:10px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);text-align:right}
+.hero__index li{display:flex;justify-content:flex-end;gap:14px}
+.hero__index b{color:var(--brand);font-weight:600;font-variant-numeric:tabular-nums}
+.rating{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:600;justify-self:start}
+.stars{color:var(--brand);letter-spacing:.12em;font-size:15px}
+.rating__txt{background:linear-gradient(currentColor,currentColor) left 100%/100% 1px no-repeat;padding-bottom:2px}
+.hero__cta{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.hero__cta .btn{padding:0 12px}
+.hud--bottom{margin-top:var(--space-6);padding-inline:var(--space-2);flex-wrap:wrap;row-gap:var(--space-3)}
+.meter{position:relative;display:flex;gap:0;align-items:flex-end;width:120px;height:24px;font-size:10px;letter-spacing:0}
+.meter__scale{position:absolute;inset:0 0 10px;display:flex;justify-content:space-between;
+  background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 100%) 0 100%/calc((100% - 1px)/8) 4px repeat-x}
+.meter__scale span{width:0;display:flex;justify-content:center;line-height:1}
+.meter__needle{position:absolute;bottom:0;left:50%;width:0;height:0;margin-left:-4px;border:4px solid transparent;border-bottom:6px solid var(--brand);border-top:0}
+
+@media (min-width:640px){
+  .hero__cta{display:flex;flex-wrap:wrap}
+  .hero__cta .btn{padding:0 26px}
+}
+@media (min-width:960px){
+  .vf{inset:calc(var(--header-h) + 8px) 24px 24px}
+  .hud--top,.hud--bottom,.hero__body{padding-inline:var(--space-6)}
+  .hero__inner{padding-top:var(--space-6);padding-bottom:calc(24px + var(--space-6))}
+  .hero__body{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:end}
+  .kicker{grid-column:1/-1}
+  .hero__body{padding-top:var(--space-5)}
+  .kicker{max-width:none}
+  .hero__title{grid-column:1/10;grid-row:2/4;font-size:min(var(--step-6),17svh)}
+  .hero__index{display:grid;grid-column:10/13;grid-row:2;align-self:start;justify-self:end;margin-top:.4em}
+  .hero__aside{grid-column:9/13;grid-row:3;margin:0;padding-bottom:.4em}
+}
+
+/* Load choreography (only when JS is present) */
+.js .header{opacity:0;transition:opacity var(--dur-3) var(--ease-out),height var(--dur-2) var(--ease-out),background-color var(--dur-2),border-color var(--dur-2)}
+.js .is-loaded .header,.js.is-loaded .header{opacity:1}
+.js .line>span{transform:translateY(108%)}
+.js.is-loaded .line>span{transform:none;transition:transform 900ms var(--ease-out) calc(var(--i) * 80ms + 150ms)}
+.js .vf i{opacity:0;transform:scale(1.6)}
+.js .vf i:nth-child(1){transform-origin:0 0;transform:translate(-14px,-14px)}
+.js .vf i:nth-child(2){transform:translate(14px,-14px)}
+.js .vf i:nth-child(3){transform:translate(-14px,14px)}
+.js .vf i:nth-child(4){transform:translate(14px,14px)}
+.js.is-loaded .vf i{opacity:1;transform:none}
+.js .af::after{opacity:0}
+.js.is-loaded .af::after{animation:af 1s var(--ease-out) 650ms both}
+@keyframes af{0%{opacity:0;transform:scale(1.35)}45%{opacity:1;transform:scale(1)}55%{opacity:.15}65%{opacity:1}75%{opacity:.15}100%{opacity:.9;transform:scale(1)}}
+.js .meter__needle{left:0}
+.js.is-loaded .meter__needle{left:50%;transition:left 1.1s cubic-bezier(.3,1.6,.5,1) 500ms}
+.js .hero__aside,.js .hud,.js .kicker{opacity:0;transform:translateY(12px)}
+.js.is-loaded .hero__aside,.js.is-loaded .hud,.js.is-loaded .kicker{opacity:1;transform:none;transition:opacity var(--dur-3) var(--ease-out) 550ms,transform var(--dur-3) var(--ease-out) 550ms}
+.js.is-loaded .kicker{transition-delay:100ms}
+
+/* Scroll reveals */
+.js [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity var(--dur-3) var(--ease-out),transform var(--dur-3) var(--ease-out);transition-delay:calc(var(--i,0) * 70ms)}
+.js [data-reveal].is-in{opacity:1;transform:none}
+
+/* ============ FILM BAND (marquee) ============ */
+.filmband{position:relative;background:var(--film);padding:18px 0;overflow:hidden;color:var(--brand);border-block:1px solid #000}
+.filmband::before,.filmband::after{content:"";position:absolute;left:0;right:0;height:7px;
+  background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(237,230,216,.85) 9px 19px,transparent 19px 28px)}
+.filmband::before{top:5px}.filmband::after{bottom:5px}
+.filmband__track{display:flex;width:max-content;gap:0;animation:marquee 40s linear infinite}
+.filmband__track span{display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+.filmband__track span::after{content:"";width:0;height:0;border:4px solid transparent;border-left:6px solid currentColor;border-right:0}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============ PAPER SECTIONS ============ */
+.paper{background:var(--paper);color:var(--paper-ink)}
+.paper ::selection{background:var(--paper-ink);color:var(--paper)}
+
+/* ============ PROOF: the contact sheet ============ */
+.proof{padding-block:var(--section)}
+.proof__head{display:grid;gap:var(--space-5)}
+.score{display:flex;align-items:flex-end;gap:var(--space-4);margin-top:var(--space-4)}
+.score__num{font:400 var(--step-6)/.8 var(--f-display);letter-spacing:-.04em}
+.score__meta{display:grid;gap:4px;padding-bottom:6px;font-size:var(--step--1);color:var(--paper-soft)}
+.score__meta .stars{color:var(--paper-ink);font-size:18px}
+.proof h2{font-size:var(--step-4);max-width:14ch}
+.proof h2 small{display:block;margin-top:var(--space-3);font:600 var(--step--1)/1.4 var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--paper-soft)}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);padding:var(--space-7) var(--gutter) var(--space-5);
+  scrollbar-width:none;overscroll-behavior-x:contain}
+.strip::-webkit-scrollbar{display:none}
+.strip::after{content:"";flex:0 0 1px}
+.frame{position:relative;flex:0 0 min(84%,420px);scroll-snap-align:start;background:var(--film);padding:40px 12px 30px;color:var(--ink)}
+.frame::before,.frame::after{content:"";position:absolute;left:0;right:0;height:8px;
+  background:repeating-linear-gradient(90deg,transparent 0 8px,var(--paper) 8px 18px,transparent 18px 26px)}
+.frame::before{top:7px}.frame::after{bottom:11px}
+.frame__img{position:relative;height:100%;display:flex;flex-direction:column;gap:var(--space-5);padding:var(--space-6) var(--space-5) var(--space-5);
+  background:linear-gradient(160deg,#252a31,#1c2027);border-radius:3px}
+.frame__edge{position:absolute;top:-23px;left:6px;right:6px;display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--brand);text-transform:uppercase}
+.frame blockquote{margin:0;font:400 var(--step-1)/1.35 var(--f-display);flex:1}
+.frame blockquote p{text-wrap:pretty}
+.frame figcaption,.frame .who{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);font-size:var(--step--1);font-weight:600;letter-spacing:.06em;color:var(--ink-soft)}
+.frame .stars{font-size:13px}
+.frame--pick{z-index:1}
+.pencil{position:absolute;inset:-18px -14px -22px -12px;width:calc(100% + 26px);height:calc(100% + 40px);pointer-events:none;overflow:visible}
+.pencil path{fill:none;stroke:var(--accent);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.92}
+.js .pencil{clip-path:inset(0 100% 0 0)}
+.js .is-in .pencil{clip-path:inset(0 0 0 0);transition:clip-path 1.2s var(--ease-in-out) .45s}
+.proof__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4);margin-top:var(--space-5)}
+.proof__foot p{font-size:var(--step--1);color:var(--paper-soft);letter-spacing:.04em}
+@media (min-width:960px){
+  .proof__head{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:end}
+  .proof__head .label{grid-column:1/-1}
+  .score{grid-column:1/6;margin:0}
+  .proof h2{grid-column:7/13}
+  .strip{max-width:1280px;margin-inline:auto;overflow:visible;padding-top:var(--space-9)}
+  .frame{flex:1 1 0}
+}
+
+/* ============ CRAFT: cascade list ============ */
+.craft{padding-block:var(--section);position:relative;overflow:hidden}
+.craft__statement{font-size:var(--step-5);line-height:.98;margin-top:var(--space-6);max-width:12ch}
+.craft__statement em{color:var(--brand)}
+.styles{margin-top:var(--space-8);border-top:1px solid var(--line);counter-reset:s}
+.styles li{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:var(--space-4);padding:var(--space-4) 0 var(--space-3);border-bottom:1px solid var(--line)}
+.styles .n{font-size:12px;font-weight:600;letter-spacing:.16em;color:var(--brand);font-variant-numeric:tabular-nums}
+.styles .w{font:400 var(--step-5)/1 var(--f-display);letter-spacing:-.03em;transition:transform var(--dur-2) var(--ease-out),color var(--dur-2)}
+.styles .d{grid-column:2;color:var(--ink-soft);font-size:var(--step--1);letter-spacing:.04em;margin-top:-4px}
+.craft__note{margin-top:var(--space-7);display:grid;gap:var(--space-4);max-width:62ch;color:var(--ink-soft)}
+.craft__note strong{color:var(--ink);font-weight:600}
+@media (hover:hover){ .styles li:hover .w{transform:translateX(.15em);color:var(--brand);font-style:italic} }
+@media (min-width:960px){
+  .craft__top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:end}
+  .craft__top .label{grid-column:1/-1}
+  .craft__statement{grid-column:1/9}
+  .craft__note{grid-column:9/13;margin:0}
+  .styles li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .styles .n{grid-column:1/2}
+  .styles li{align-items:end}
+  .styles li:nth-child(1) .w{grid-column:2/9}
+  .styles li:nth-child(2) .w{grid-column:4/10}
+  .styles li:nth-child(3) .w{grid-column:6/13}
+  .styles .d{grid-row:1;grid-column:10/13;justify-self:end;text-align:right;margin:0;padding-bottom:1.1em}
+  .styles li:nth-child(3) .d{grid-column:2/6;justify-self:start;text-align:left}
+}
+
+/* ============ OFFER: sticky side + price list ============ */
+.offer{padding-block:var(--section)}
+.offer__grid{display:grid;gap:var(--space-7)}
+.offer__side h2{font-size:var(--step-4);margin-top:var(--space-5);max-width:13ch}
+.offer__side h2 em{font-style:italic}
+.offer__side p{margin-top:var(--space-5);color:var(--paper-soft);max-width:40ch}
+.offer__side .btn{margin-top:var(--space-6)}
+.prices{border-top:1.5px solid var(--paper-ink)}
+.price{display:grid;grid-template-columns:1fr auto;gap:var(--space-2) var(--space-4);padding:var(--space-5) 0;border-bottom:1px solid var(--paper-line);align-items:baseline}
+.price h3{font-size:var(--step-2);line-height:1.1}
+.price__sub{grid-column:1/-1;color:var(--paper-soft);font-size:var(--step--1);letter-spacing:.02em}
+.price__val{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.price__val--soft{font-weight:400;color:var(--paper-soft);font-size:var(--step--1);letter-spacing:.04em}
+.price--main{padding-block:var(--space-6) var(--space-6)}
+.price--main h3{font-size:var(--step-3)}
+.price--main .price__val{grid-column:1/-1;text-align:left;font:400 var(--step-4)/1 var(--f-display);letter-spacing:-.02em;margin-top:var(--space-2)}
+.price--main .price__val small{font:600 var(--step--1)/1 var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--paper-soft);margin-right:10px;vertical-align:.5em}
+.incl{grid-column:1/-1;display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+.incl li{display:flex;gap:var(--space-3);align-items:baseline}
+.incl li::before{content:"";flex:none;width:14px;height:1px;background:var(--paper-ink);transform:translateY(-4px)}
+@media (min-width:960px){
+  .offer__grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .offer__side{grid-column:1/6;position:sticky;top:calc(var(--header-h) + 48px);align-self:start}
+  .prices{grid-column:7/13}
+}
+
+/* ============ FAQ ============ */
+.faq{padding-block:var(--section);background:var(--surface)}
+.faq h2{font-size:var(--step-5);margin-top:var(--space-5);line-height:.95}
+.faq h2 em{color:var(--brand)}
+.faq__list{margin-top:var(--space-7);border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:64px;padding:var(--space-4) 0;cursor:pointer;list-style:none;
+  font:400 var(--step-2)/1.15 var(--f-display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:16px;height:16px;
+  background:linear-gradient(var(--brand),var(--brand)) center/100% 1.5px no-repeat,linear-gradient(var(--brand),var(--brand)) center/1.5px 100% no-repeat;
+  transition:transform var(--dur-2) var(--ease-out)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq details p{padding:0 0 var(--space-5);color:var(--ink-soft);max-width:60ch}
+.faq details[open] p{animation:fadeup var(--dur-2) var(--ease-out)}
+@keyframes fadeup{from{opacity:0;transform:translateY(-6px)}}
+@media (min-width:960px){
+  .faq__wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .faq__wrap>*{grid-column:3/12}
+}
+
+/* ============ PLACE: print + hours + map ============ */
+.place{padding-block:var(--section)}
+.place__grid{display:grid;gap:var(--space-7)}
+.place h2{font-size:var(--step-5);line-height:.95;margin-top:var(--space-5)}
+.place__addr{margin-top:var(--space-4);color:var(--paper-soft)}
+.place__actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+.print{margin:0;justify-self:start;width:min(82%,420px);background:#f8f4ec;padding:12px 12px 0;box-shadow:0 1px 0 rgba(22,25,30,.08),0 24px 48px -28px rgba(22,25,30,.45)}
+.print__img{position:relative;aspect-ratio:4/5;overflow:hidden;background:#cfc6b6}
+.print__img img{position:absolute;top:0;left:0;max-width:none;width:246.2%;height:auto;margin-left:-25.64%;margin-top:-3.2%;
+  filter:saturate(.75) contrast(1.06) sepia(.12)}
+.print figcaption{display:flex;justify-content:space-between;gap:var(--space-3);padding:12px 2px 14px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-soft)}
+.hours h3{font:600 var(--step--1)/1 var(--f-text);letter-spacing:.16em;text-transform:uppercase;color:var(--paper-soft)}
+.hours__top{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-4)}
+.hours .badge{font-size:var(--step--1);font-weight:600;color:var(--paper-ink);padding:8px 12px;border:1px solid var(--paper-line);border-radius:999px}
+.hours .badge::before{background:var(--paper-soft)}
+.hours .badge.is-open::before{background:#3f7d4e;animation:none}
+.hours table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours th,.hours td{padding:12px 0;border-bottom:1px solid var(--paper-line);text-align:left;font-weight:400}
+.hours th{text-transform:capitalize}
+.hours td{text-align:right}
+.hours tr.is-today th,.hours tr.is-today td{font-weight:600}
+.hours tr.is-today th::after{content:"aujourd’hui";margin-left:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-soft);font-weight:600}
+.hours .closed{color:var(--paper-soft)}
+.map{position:relative;border-radius:var(--r-2);overflow:hidden;aspect-ratio:4/3;background:#d9d1c2}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.6) contrast(1.05)}
+.map__fallback{margin-top:var(--space-3)}
+@media (min-width:960px){
+  .place__grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--space-8)}
+  .place__head{grid-column:1/7}
+  .print{grid-column:8/12;grid-row:1/3;width:100%;justify-self:stretch;margin-top:var(--space-9);transform:rotate(1.2deg)}
+  .hours{grid-column:1/6;grid-row:2}
+  .place__map{grid-column:1/-1}
+  .map{aspect-ratio:21/8}
+}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .print__img img{animation:drift linear both;animation-timeline:view();transform-origin:40% 40%}
+    @keyframes drift{from{transform:scale(1)}to{transform:scale(1.1)}}
+  }
+}
+
+/* ============ CONTACT ============ */
+.contact{padding-block:var(--section);position:relative;overflow:hidden}
+.contact__title{font-size:var(--step-6);line-height:.9;letter-spacing:-.03em;margin-top:var(--space-5)}
+.contact__title em{color:var(--brand)}
+.contact__lead{margin-top:var(--space-6);max-width:46ch;color:var(--ink-soft)}
+.contact__grid{display:grid;gap:var(--space-8);margin-top:var(--space-7)}
+.sms-form{display:grid;gap:var(--space-4)}
+html:not(.js) .sms-form{display:none}
+.field{display:grid;gap:6px}
+.field span{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.field input{width:100%;min-height:52px;padding:0 0 4px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;color:var(--ink);
+  font:400 var(--step-2)/1.2 var(--f-display);color-scheme:dark;transition:border-color var(--dur-2)}
+.field input:focus{outline:none;border-bottom-color:var(--brand)}
+.sms-form .btn{justify-self:start;margin-top:var(--space-3)}
+.direct{display:grid;gap:var(--space-4);align-content:start}
+.direct__tel{font:400 var(--step-4)/1 var(--f-display);letter-spacing:-.02em;text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;justify-self:start;
+  background:linear-gradient(var(--brand),var(--brand)) left 100%/100% 1px no-repeat;padding-bottom:6px}
+.direct p{color:var(--ink-soft);font-size:var(--step--1);max-width:40ch}
+.social{display:flex;gap:var(--space-3);margin-top:var(--space-2)}
+.social a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:600;font-size:var(--step--1);
+  transition:border-color var(--dur-2),color var(--dur-2)}
+@media (hover:hover){ .social a:hover{border-color:var(--brand);color:var(--brand)} }
+@media (min-width:960px){
+  .contact__grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .sms-form{grid-column:1/7}
+  .direct{grid-column:8/13}
+}
+
+/* ============ FOOTER ============ */
+.foot{border-top:1px solid var(--line);padding:var(--space-8) 0 var(--space-6);overflow:hidden}
+.foot__mark{font:400 clamp(3rem,15.5vw,13rem)/.85 var(--f-display);letter-spacing:-.04em;white-space:nowrap;color:var(--ink)}
+.foot__mark em{color:var(--brand)}
+.foot__row{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-6);margin-top:var(--space-6);font-size:var(--step--1);color:var(--ink-soft);align-items:center}
+.foot__row a{display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;text-decoration:none}
+@media (hover:hover){ .foot__row a:hover{color:var(--ink)} }
+
+/* ============ ACTION BAR (mobile) ============ */
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:100;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--line)}
+.actionbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:64px;background:var(--bg);text-decoration:none;
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:background-color var(--dur-1)}
+.actionbar a:first-child{background:var(--brand);color:var(--brand-ink)}
+.actionbar a:active{background:var(--surface)}
+.actionbar a:first-child:active{background:#d9a56c}
+@media (min-width:768px){ .actionbar{display:none} }
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .line>span,.js .vf i,.js .hero__aside,.js .hud,.js .kicker,.js [data-reveal]{opacity:1;transform:none}
+  .js .af::after{opacity:.9}
+  .js .meter__needle{left:50%}
+  .js .pencil{clip-path:none}
+  .menu a{transform:none}
+}
+</style>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var HOURS={lundi:"10:00–19:30",mardi:"10:00–19:30",mercredi:"10:00–19:30",jeudi:"10:00–19:30",vendredi:"10:00–19:30",samedi:"10:00–19:30",dimanche:"Fermé"};
+  var DAYS=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  var WD={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+
+  function parse(s){
+    s=String(s||'').trim();
+    if(!s||/ferm/i.test(s))return [];
+    if(/24\s*h|24\/24|24 heures/i.test(s))return [[0,1440]];
+    var out=[];
+    s.split(/[,;]/).forEach(function(p){
+      var m=p.match(/(\d{1,2})\s*[:h.]?\s*(\d{2})?\s*[–—-]\s*(\d{1,2})\s*[:h.]?\s*(\d{2})?/);
+      if(!m)return;
+      var a=+m[1]*60+(+m[2]||0), b=+m[3]*60+(+m[4]||0);
+      if(b<=a)b+=1440;
+      out.push([a,b]);
+    });
+    return out.sort(function(x,y){return x[0]-y[0]});
+  }
+  function fmt(min){min%=1440;var h=Math.floor(min/60),m=min%60;return h+'h'+(m?String(m).padStart(2,'0'):'')}
+  function now(){
+    var parts={};
+    try{
+      new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Paris',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'})
+        .formatToParts(new Date()).forEach(function(p){parts[p.type]=p.value});
+      return {d:WD[parts.weekday],m:(+parts.hour%24)*60+(+parts.minute)};
+    }catch(e){var n=new Date();return {d:n.getDay(),m:n.getHours()*60+n.getMinutes()}}
+  }
+  function status(){
+    var t=now(),i,r;
+    var today=parse(HOURS[DAYS[t.d]]), prev=parse(HOURS[DAYS[(t.d+6)%7]]);
+    for(i=0;i<prev.length;i++){r=prev[i];if(r[1]>1440&&t.m<r[1]-1440)return {open:true,txt:'Ouvert · jusqu’à '+fmt(r[1])}}
+    for(i=0;i<today.length;i++){r=today[i];if(t.m>=r[0]&&t.m<r[1])return {open:true,txt:r[1]-r[0]>=1440?'Ouvert 24h/24':'Ouvert · jusqu’à '+fmt(r[1])}}
+    for(var k=0;k<8;k++){
+      var rs=parse(HOURS[DAYS[(t.d+k)%7]]);
+      for(i=0;i<rs.length;i++){
+        if(k===0&&rs[i][0]<=t.m)continue;
+        var when=k===0?'à ':k===1?'demain à ':DAYS[(t.d+k)%7]+' à ';
+        return {open:false,txt:'Fermé · ouvre '+when+fmt(rs[i][0])};
+      }
+    }
+    return {open:false,txt:'Fermé'};
+  }
+  function clock(){
+    try{return new Intl.DateTimeFormat('fr-FR',{timeZone:'Europe/Paris',hour:'2-digit',minute:'2-digit'}).format(new Date())}
+    catch(e){return ''}
+  }
+  function tick(){
+    var s=status();
+    document.querySelectorAll('[data-status]').forEach(function(el){el.textContent=s.txt;el.classList.toggle('is-open',s.open)});
+    document.querySelectorAll('[data-clock]').forEach(function(el){el.textContent=clock()});
+    var d=DAYS[now().d];
+    document.querySelectorAll('[data-day]').forEach(function(tr){
+      var on=tr.getAttribute('data-day')===d;tr.classList.toggle('is-today',on);
+      if(on)tr.setAttribute('aria-current','date');else tr.removeAttribute('aria-current');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    tick();setInterval(tick,30000);
+    document.querySelectorAll('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear()});
+    requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('is-loaded')})});
+
+    // Header shrink
+    var header=document.querySelector('.header'),ticking=false;
+    function onScroll(){header.classList.toggle('is-scrolled',scrollY>40);ticking=false}
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+    // Menu
+    var btn=document.querySelector('.menu-btn'),menu=document.getElementById('menu'),label=btn.querySelector('.menu-btn__label');
+    function setMenu(open){
+      btn.setAttribute('aria-expanded',open);menu.classList.toggle('is-open',open);menu.setAttribute('aria-hidden',!open);
+      document.body.classList.toggle('is-locked',open);label.textContent=open?'Fermer':'Menu';
+      if('inert' in menu)menu.inert=!open;
+      if(open){var f=menu.querySelector('a');setTimeout(function(){f&&f.focus()},60)}
+    }
+    if('inert' in menu)menu.inert=true;
+    btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true')});
+    menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+    addEventListener('keydown',function(e){if(e.key==='Escape'&&btn.getAttribute('aria-expanded')==='true'){setMenu(false);btn.focus()}});
+    matchMedia('(min-width: 960px)').addEventListener('change',function(e){if(e.matches)setMenu(false)});
+
+    // Reveals
+    var els=document.querySelectorAll('[data-reveal]');
+    if(reduce||!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-in')})}
+    else{
+      var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+      els.forEach(function(el){io.observe(el)});
+    }
+
+    // SMS composer
+    var form=document.querySelector('[data-sms]');
+    if(form)form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var d=form.date.value,l=form.lieu.value.trim(),msg='Bonjour Sandy, je vous écris depuis votre site.';
+      if(d){var p=d.split('-');msg+=' Nous nous marions le '+p[2]+'/'+p[1]+'/'+p[0]}
+      if(l)msg+=(d?', ':' Notre mariage aura lieu ')+'à '+l;
+      msg+=(d||l?'. ':' ')+'Êtes-vous disponible ?';
+      location.href='sms:'+form.getAttribute('data-sms')+'?&body='+encodeURIComponent(msg);
+    });
+  });
+})();
+</script>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://sandy-kohlmayer-photographe-versailles.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://sandy-kohlmayer-photographe-versailles.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://sandy-kohlmayer-photographe-versailles.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l2 4.5-2.3 1.4a11 11 0 0 0 5.9 5.9l1.4-2.3 4.5 2V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-6 4z"/><path d="M8 10.5h8"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M3.5 11 20.5 3.5 13 20.5l-2-7.5z"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-7h2.5l.5-3h-3V9c0-.9.4-1.5 1.6-1.5H17V4.8c-.5-.1-1.4-.2-2.3-.2C12.4 4.6 11 6 11 8.4V11H8.5v3H11v7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Sandy Kohlmayer, retour en haut">
+      <span class="mark__sk" aria-hidden="true">SK</span>
+      <span class="mark__name">Sandy Kohlmayer</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#avis">Avis</a>
+      <a href="#ecriture">L’écriture</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#questions">Questions</a>
+      <a href="#adresse">Adresse</a>
+    </nav>
+    <a class="btn btn--primary header__cta" href="tel:+447445000261"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-btn__label">Menu</span><span class="menu-btn__bars" aria-hidden="true"></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Menu">
+    <ol>
+      <li><a href="#avis" style="--i:0">Avis</a></li>
+      <li><a href="#ecriture" style="--i:1">L’écriture</a></li>
+      <li><a href="#prestations" style="--i:2">Prestations &amp; tarifs</a></li>
+      <li><a href="#questions" style="--i:3">Questions pratiques</a></li>
+      <li><a href="#adresse" style="--i:4">Adresse &amp; horaires</a></li>
+      <li><a href="#contact" style="--i:5">Contact</a></li>
+    </ol>
+  </nav>
+  <div class="menu__foot">
+    <span>8 ter rue Monseigneur Gibier, Versailles</span>
+    <span>+44&nbsp;7445&nbsp;000261</span>
+  </div>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="vf__x"></span></div>
+    <div class="hero__inner wrap">
+      <div class="hud hud--top">
+        <span>Versailles <span class="clock" data-clock></span></span>
+        <span class="badge" data-status aria-live="polite"></span>
+      </div>
+      <div class="hero__body">
+        <p class="kicker">Photographe de mariage &amp; portrait</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line" style="--i:0"><span>Un seul mariage</span></span>
+          <span class="line" style="--i:1"><span>par jour.</span></span>
+          <span class="line" style="--i:2"><span><em class="af">Le vôtre.</em></span></span>
+        </h1>
+        <ol class="hero__index" aria-label="Prestations">
+          <li>Mariage <b>01</b></li><li>Séance engagement <b>02</b></li><li>Day after <b>03</b></li><li>Portrait <b>04</b></li>
+        </ol>
+        <div class="hero__aside">
+          <p class="hero__lead">Lumière naturelle, reportage et instants volés, depuis Versailles.</p>
+          <a class="rating" href="https://www.google.com/maps/place/?q=place_id:ChIJNzilQcR95kcRACHaxkjuAYs" target="_blank" rel="noopener">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="rating__txt">5,0 · 3 avis Google</span>
+          </a>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="tel:+447445000261"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+            <a class="btn btn--ghost" href="sms:+447445000261?&amp;body=Bonjour%20Sandy%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.%20Nous%20aimerions%20parler%20de%20notre%20mariage."><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+          </div>
+        </div>
+      </div>
+      <div class="hud hud--bottom" aria-hidden="true">
+        <span>48°47′37″ N · 2°07′21″ E</span>
+        <span class="meter"><span class="meter__scale"><span>−2</span><span>−1</span><span>0</span><span>+1</span><span>+2</span></span><i class="meter__needle"></i></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="filmband" aria-hidden="true">
+    <div class="filmband__track">
+      <span>Traditionnel</span><span>Artistique</span><span>Reportage</span><span>Lumière naturelle</span><span>Instants volés</span><span>Versailles</span><span>France &amp; étranger</span>
+      <span>Traditionnel</span><span>Artistique</span><span>Reportage</span><span>Lumière naturelle</span><span>Instants volés</span><span>Versailles</span><span>France &amp; étranger</span>
+    </div>
+  </div>
+
+  <!-- PROOF: contact sheet -->
+  <section class="proof paper" id="avis" aria-labelledby="avis-title">
+    <div class="wrap">
+      <div class="proof__head">
+        <p class="label" data-reveal><span>01</span> Planche contact</p>
+        <div class="score" data-reveal style="--i:1">
+          <span class="score__num">5,0</span>
+          <span class="score__meta"><span class="stars" aria-hidden="true">★★★★★</span><span>Note Google<br>3 avis, tous 5&nbsp;étoiles</span></span>
+        </div>
+        <h2 id="avis-title" data-reveal style="--i:2">«&nbsp;Sait nous mettre à&nbsp;l’aise&nbsp;»<small>Angelique M., sur Google</small></h2>
+      </div>
+    </div>
+    <ul class="strip" aria-label="Avis Google">
+      <li class="frame frame--pick" data-reveal>
+        <div class="frame__img">
+          <span class="frame__edge" aria-hidden="true"><span>▸ 12A</span><span>2016</span></span>
+          <blockquote><p>«&nbsp;Une personne douce et très agréable qui sait nous mettre à l'aise pendant les séances photos. Pour des photos pleines de douceur et de naturel nous sommes pleinement satisfaits, je la recommande vivement.&nbsp;»</p></blockquote>
+          <p class="who"><span>Angelique M.</span><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></p>
+        </div>
+        <svg class="pencil" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path vector-effect="non-scaling-stroke" d="M14 4C38 1.5 66 1.8 90 3.6c5.5.5 7.6 3.4 7.8 9 .7 24 .6 50-.2 74-.2 6.4-3 9.4-9 9.8-25 1.4-51 1.6-76 .2C6.6 96.3 3 93.4 2.6 87.6 1.4 63 1.6 38 2.4 14 2.6 7.6 5.4 4.8 12 4.2c9-.8 22-1.6 34-1.2"/></svg>
+      </li>
+      <li class="frame" data-reveal style="--i:1">
+        <div class="frame__img">
+          <span class="frame__edge" aria-hidden="true"><span>▸ 13</span><span>2016</span></span>
+          <blockquote><p>«&nbsp;Professionnelle&nbsp;! Un très bon contact, très sympa pour un résultat à la hauteur&nbsp;!&nbsp;»</p></blockquote>
+          <p class="who"><span>Kris T.</span><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></p>
+        </div>
+      </li>
+      <li class="frame" data-reveal style="--i:2">
+        <div class="frame__img">
+          <span class="frame__edge" aria-hidden="true"><span>▸ 13A</span><span>2022</span></span>
+          <blockquote><p>«&nbsp;Très heureuse […] pour notre mariage improvisé&nbsp;»</p></blockquote>
+          <p class="who"><span>Buessé L.</span><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span></p>
+        </div>
+      </li>
+    </ul>
+    <div class="wrap">
+      <div class="proof__foot">
+        <p>Avis publiés sur la fiche Google de Sandy Kohlmayer Photographe.</p>
+        <a class="link" href="https://www.google.com/maps/place/?q=place_id:ChIJNzilQcR95kcRACHaxkjuAYs" target="_blank" rel="noopener">Voir les 3 avis sur Google <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT -->
+  <section class="craft" id="ecriture" aria-labelledby="craft-title">
+    <div class="wrap">
+      <div class="craft__top">
+        <p class="label" data-reveal><span>02</span> L’écriture</p>
+        <h2 class="craft__statement" id="craft-title" data-reveal>De la douceur, du naturel, <em>des instants volés.</em></h2>
+        <div class="craft__note" data-reveal style="--i:1">
+          <p><strong>Lumière naturelle avant tout.</strong> Deux boîtiers Canon professionnels, des objectifs à grande ouverture, en numérique.</p>
+        </div>
+      </div>
+      <ol class="styles" aria-label="Trois styles">
+        <li data-reveal><span class="n">01</span><span class="w">Traditionnel</span><span class="d">Les photos que l’on encadre</span></li>
+        <li data-reveal style="--i:1"><span class="n">02</span><span class="w">Artistique</span><span class="d">Le regard de la photographe</span></li>
+        <li data-reveal style="--i:2"><span class="n">03</span><span class="w"><em>Reportage</em></span><span class="d">La journée telle qu’elle se passe</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer paper" id="prestations" aria-labelledby="offer-title">
+    <div class="wrap offer__grid">
+      <div class="offer__side">
+        <p class="label" data-reveal><span>03</span> Prestations &amp; tarifs</p>
+        <h2 id="offer-title" data-reveal style="--i:1">De la séance engagement au <em>day after.</em></h2>
+        <p data-reveal style="--i:2">Tarifs publiés par Sandy Kohlmayer. Déplacements en France et à l’étranger, frais de déplacement en sus.</p>
+        <a class="btn btn--dark" href="#contact" data-reveal style="--i:3">Demander votre date</a>
+      </div>
+      <ol class="prices">
+        <li class="price price--main" data-reveal>
+          <h3>Photographie de mariage</h3>
+          <p class="price__val"><small>À partir de</small>800&nbsp;€</p>
+          <ul class="incl">
+            <li>Toutes les photos retouchées en HD</li>
+            <li>Galerie web privée pendant 6&nbsp;mois</li>
+            <li>Clé USB + 10 tirages fine art</li>
+          </ul>
+        </li>
+        <li class="price" data-reveal>
+          <h3>Heure supplémentaire</h3>
+          <p class="price__val">130&nbsp;€&nbsp;TTC</p>
+          <p class="price__sub">Par heure, le jour du mariage</p>
+        </li>
+        <li class="price" data-reveal>
+          <h3>Séance engagement</h3>
+          <p class="price__val price__val--soft">Sur demande</p>
+          <p class="price__sub">Avant le mariage</p>
+        </li>
+        <li class="price" data-reveal>
+          <h3>Séance après mariage</h3>
+          <p class="price__val price__val--soft">Sur demande</p>
+          <p class="price__sub">Le day after</p>
+        </li>
+        <li class="price" data-reveal>
+          <h3>Albums</h3>
+          <p class="price__val price__val--soft">Sur demande</p>
+        </li>
+        <li class="price" data-reveal>
+          <h3>Portrait</h3>
+          <p class="price__val price__val--soft">Sur demande</p>
+          <p class="price__sub">Séances en lumière naturelle</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="questions" aria-labelledby="faq-title">
+    <div class="wrap faq__wrap">
+      <p class="label" data-reveal><span>04</span> Questions pratiques</p>
+      <h2 id="faq-title" data-reveal style="--i:1">Avant de réserver, <em>l’essentiel.</em></h2>
+      <div class="faq__list" data-reveal style="--i:2">
+        <details open>
+          <summary>Combien de mariages par jour&nbsp;?</summary>
+          <p>Un seul. Votre date n’est partagée avec aucun autre mariage.</p>
+        </details>
+        <details>
+          <summary>Quand recevrons-nous les photos&nbsp;?</summary>
+          <p>Environ un mois après le mariage : toutes les photos retouchées en HD, sur une galerie web privée pendant 6&nbsp;mois et sur clé USB.</p>
+        </details>
+        <details>
+          <summary>Notre mariage n’est pas à Versailles</summary>
+          <p>Sandy se déplace en France et à l’étranger. Les frais de déplacement s’ajoutent au forfait.</p>
+        </details>
+        <details>
+          <summary>Comment se passe le paiement&nbsp;?</summary>
+          <p>Par virement ou en espèces : 30&nbsp;% d’acompte à la signature, 70&nbsp;% le jour de la prestation.</p>
+        </details>
+        <details>
+          <summary>Pourquoi un numéro en +44&nbsp;?</summary>
+          <p>La ligne de Sandy est britannique, entre Paris et Londres. Depuis la France, composez le +44&nbsp;7445&nbsp;000261, par appel ou par SMS.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLACE -->
+  <section class="place paper" id="adresse" aria-labelledby="place-title">
+    <div class="wrap place__grid">
+      <div class="place__head">
+        <p class="label" data-reveal><span>05</span> Adresse &amp; horaires</p>
+        <h2 id="place-title" data-reveal style="--i:1">8 ter, rue Monseigneur Gibier</h2>
+        <p class="place__addr" data-reveal style="--i:2">78000 Versailles</p>
+        <div class="place__actions" data-reveal style="--i:3">
+          <a class="btn btn--dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sandy%20KOHLMAYER%20Photographe%2C%208%20ter%20Rue%20Mgr%20Gibier%2C%2078000%20Versailles" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+          <a class="btn btn--ghost" href="tel:+447445000261"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+        </div>
+      </div>
+      <figure class="print" data-reveal>
+        <div class="print__img">
+          <img src="assets/photos/photo-01.jpg" width="768" height="768" loading="lazy" decoding="async" alt="Façades de la rue Monseigneur Gibier à Versailles : porte cochère bleu nuit et volets clairs.">
+        </div>
+        <figcaption><span>Rue Mgr Gibier</span><span>Versailles</span></figcaption>
+      </figure>
+      <div class="hours" data-reveal>
+        <div class="hours__top">
+          <h3>Horaires</h3>
+          <span class="badge" data-status></span>
+        </div>
+        <table>
+          <caption class="sr">Horaires d’ouverture</caption>
+          <tbody>
+            <tr data-day="lundi"><th scope="row">lundi</th><td>10h – 19h30</td></tr>
+            <tr data-day="mardi"><th scope="row">mardi</th><td>10h – 19h30</td></tr>
+            <tr data-day="mercredi"><th scope="row">mercredi</th><td>10h – 19h30</td></tr>
+            <tr data-day="jeudi"><th scope="row">jeudi</th><td>10h – 19h30</td></tr>
+            <tr data-day="vendredi"><th scope="row">vendredi</th><td>10h – 19h30</td></tr>
+            <tr data-day="samedi"><th scope="row">samedi</th><td>10h – 19h30</td></tr>
+            <tr data-day="dimanche"><th scope="row">dimanche</th><td class="closed">Fermé</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="place__map" data-reveal>
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=Sandy%20KOHLMAYER%20Photographe%2C%208%20ter%20Rue%20Mgr%20Gibier%2C%2078000%20Versailles&amp;output=embed" title="Carte : 8 ter rue Monseigneur Gibier, Versailles" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="map__fallback"><a class="link" href="https://www.google.com/maps/place/?q=place_id:ChIJNzilQcR95kcRACHaxkjuAYs" target="_blank" rel="noopener">Ouvrir dans Google Maps <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="label" data-reveal><span>06</span> Contact</p>
+      <h2 class="contact__title" id="contact-title" data-reveal style="--i:1">Votre date est <em>encore libre&nbsp;?</em></h2>
+      <p class="contact__lead" data-reveal style="--i:2">Un seul mariage par jour : la date se réserve en premier. Indiquez-la avec le lieu, votre message s’ouvre prêt à partir en SMS.</p>
+      <div class="contact__grid">
+        <form class="sms-form" data-sms="+447445000261" data-reveal>
+          <label class="field"><span>Date du mariage</span><input type="date" name="date"></label>
+          <label class="field"><span>Lieu (ville, domaine…)</span><input type="text" name="lieu" autocomplete="off"></label>
+          <button class="btn btn--primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Préparer le SMS</button>
+        </form>
+        <div class="direct" data-reveal style="--i:1">
+          <span class="label">Ou directement</span>
+          <a class="direct__tel" href="tel:+447445000261">+44&nbsp;7445&nbsp;000261</a>
+          <p>Ligne britannique, appel ou SMS. Du lundi au samedi, 10h – 19h30.</p>
+          <div class="social">
+            <a href="https://www.facebook.com/546238902193780" target="_blank" rel="noopener" aria-label="Sandy Kohlmayer sur Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__mark" aria-hidden="true">Sandy <em>Kohlmayer</em></p>
+    <div class="foot__row">
+      <span>Photographe de mariage &amp; portrait</span>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Sandy%20KOHLMAYER%20Photographe%2C%208%20ter%20Rue%20Mgr%20Gibier%2C%2078000%20Versailles" target="_blank" rel="noopener">8 ter rue Mgr Gibier, 78000 Versailles</a>
+      <a href="tel:+447445000261">+44&nbsp;7445&nbsp;000261</a>
+      <a href="https://www.facebook.com/546238902193780" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
+      <span>© <span data-year></span> Sandy Kohlmayer Photographe</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Actions rapides">
+  <a href="tel:+447445000261"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+  <a href="sms:+447445000261?&amp;body=Bonjour%20Sandy%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.%20Nous%20aimerions%20parler%20de%20notre%20mariage."><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Sandy%20KOHLMAYER%20Photographe%2C%208%20ter%20Rue%20Mgr%20Gibier%2C%2078000%20Versailles" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+</nav>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Aperçu réalisé par Aymen Jallouli pour Sandy KOHLMAYER Photographe : ce site n'est pas encore le site officiel de l'établissement.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
